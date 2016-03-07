@@ -191,20 +191,6 @@ final class JavaEscapeUtil {
         }
 
         /*
-         * Simple Escape Character will be level 1 (always escaped)
-         */
-        ESCAPE_LEVELS[0x08] = 1;
-        ESCAPE_LEVELS[0x09] = 1;
-        ESCAPE_LEVELS[0x0A] = 1;
-        ESCAPE_LEVELS[0x0C] = 1;
-        ESCAPE_LEVELS[0x0D] = 1;
-        ESCAPE_LEVELS[0x22] = 1;
-        // Escaping the apostrophe is only required in character literals, but we are escaping
-        // string literals, so we don't really need this escape if level < 3
-        ESCAPE_LEVELS[0x27] = 3;
-        ESCAPE_LEVELS[0x5C] = 1;
-
-        /*
          * Java defines one ranges of non-displayable, control characters: U+0000 to U+001F.
          * Additionally, the U+007F to U+009F range is also escaped (which is allowed).
          */
@@ -214,6 +200,20 @@ final class JavaEscapeUtil {
         for (char c = 0x7F; c <= 0x9F; c++) {
             ESCAPE_LEVELS[c] = 1;
         }
+
+        /*
+         * Simple Escape Character will be level 0 (always escaped)
+         */
+        ESCAPE_LEVELS[0x08] = 0;
+        ESCAPE_LEVELS[0x09] = 0;
+        ESCAPE_LEVELS[0x0A] = 0;
+        ESCAPE_LEVELS[0x0C] = 0;
+        ESCAPE_LEVELS[0x0D] = 0;
+        ESCAPE_LEVELS[0x22] = 0;
+        // Escaping the apostrophe is only required in character literals, but we are escaping
+        // string literals, so we don't really need this escape if level < 3
+        ESCAPE_LEVELS[0x27] = 3;
+        ESCAPE_LEVELS[0x5C] = 0;
 
     }
 

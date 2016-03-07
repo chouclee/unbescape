@@ -69,9 +69,13 @@ package org.unbescape.java;
  *
  */
 public enum JavaEscapeLevel {
+    /**
+     * Level 0 escape: escape only the basic eacape set: Single Escape Chars
+     */
+    LEVEL_0_SINGLE_ESCAPE_SET(0),
 
     /**
-     * Level 1 escape: escape only the basic escape set: Single Escape Chars plus non-displayable control chars.
+     * Level 1 escape: escape the level0 escape set plus non-displayable control chars.
      */
     LEVEL_1_BASIC_ESCAPE_SET(1),
 
